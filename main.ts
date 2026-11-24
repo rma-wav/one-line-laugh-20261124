@@ -18,5 +18,11 @@ const LINE =
 // may point elsewhere; the grader path is unchanged by default.
 const outDir = process.env.OUTPUT_DIR ?? "/output";
 
+const OUT_FILE = "entry.txt";
+
+if (LINE.length < 1 || LINE.length > 200) {
+  throw new Error(`entry must be 1-200 characters, got ${LINE.length}`);
+}
+
 mkdirSync(outDir, { recursive: true });
-writeFileSync(join(outDir, "entry.txt"), LINE, "utf8");
+writeFileSync(join(outDir, OUT_FILE), LINE, "utf8");
